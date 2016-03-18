@@ -1,3 +1,4 @@
+require 'pry'
 class AttractionsController < ApplicationController
   def index
      @attractions = Attraction.all
@@ -34,6 +35,17 @@ class AttractionsController < ApplicationController
      @attraction = Attraction.find(params[:id])
      @user = current_user
    end
+
+   def take_ride
+
+    @ride = Ride.new(user_id: current_user.id, attraction_id: params[:format])
+    msg = @ride.take_ride
+    #binding.pry
+    redirect_to user_path(current_user), :alert => msg
+  end
+
+
+
  
    private
  

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def destory
+  def destroy
     session.destroy
     redirect_to root_path
   end
